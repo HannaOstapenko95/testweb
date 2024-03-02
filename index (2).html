@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Courses - Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        h1, h2, p {
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 48px;
+            color: #333; /* Dark text color */
+        }
+        h2 {
+            font-size: 32px;
+            color: #555; /* Slightly darker text color */
+        }
+        .menu {
+            background-color: #222; /* Dark background for menu */
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .menu ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        .menu ul li:last-child {
+            margin-right: 0;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #fff; /* White text color */
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .menu ul li a:hover {
+            background-color: #444; /* Darker background on hover */
+        }
+        /* Styles for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 10px; /* Adjust padding for smaller screens */
+    }
+    /* Styles for tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        max-width: 600px; /* Adjust max-width for tablets */
+    }
+}
+
+    .menu ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu {
+        padding: 10px;
+    }
+}
+        .courses {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .courses li {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #333;
+        }
+        .course-card {
+            background-color: #fff; 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        /* .carousel-image img {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+} */
+.carousel-image img {
+    width: 100%; /* Ensure all images take up the full width of their containers */
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure images cover their containers without distortion */
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+}
+
+.carousel-image {
+    flex: 0 0 auto;
+    width: 100%; /* Ensure each image takes the full width */
+    transition: transform 0.5s ease;
+}
+
+.carousel-image img {
+    width: 100%;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .course-card h3 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .course-card p {
+            margin-bottom: 0;
+            color: #777;
+        }
+        .contact-info p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .social-media-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .social-media-buttons a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #444; /* Dark background for buttons */
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 20px;
+        }
+        .social-media-buttons a:hover {
+            background-color: #666; /* Slightly darker background on hover */
+        }
+        /* About Me */
+        #about-me {
+            background-color: #222; /* Dark background for About Me section */
+            color: #fff; /* White text color */
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        /* Contact */
+        #contact {
+            background-color: #222; /* Dark background for Contact section */
+            color: #fff; /* White text color */
+            padding: 50px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dot-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.active-dot {
+    background-color: #717171;
+}
+#read-more-link {
+    display: block;
+    margin-top: 10px;
+    color: blue;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the menu stays on top of other content */
+    background-color: #222; /* Adjust background color as needed */
+    padding: 10px 0;
+}
+
+.container {
+    padding-top: 50px; /* Adjust padding top to account for the fixed menu */
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #222;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.menu ul {
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+.menu ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu ul li:last-child {
+    margin-right: 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.menu ul li a:hover {
+    background-color: #444;
+}
+
+.logo img {
+    height: 40px; /* Adjust the height of the logo as needed */
+    margin-left: 20px; /* Adjust the spacing between the logo and menu items */
+}
+
+.container {
+    max-width: 800px;
+    margin: 70px auto 0; /* Adjust top margin to account for the fixed menu */
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-picture img {
+    border-radius: 50%; /* Make the profile picture round */
+    width: 150px; /* Adjust the width of the profile picture */
+    height: 150px; /* Adjust the height of the profile picture */
+    margin-bottom: 20px; /* Add spacing below the profile picture */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="logo">
+            <img src="C:\Users\hanna\OneDrive\Desktop\gpt\sunset-1373171_1280.jpg" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="#about-me">About Me</a></li>
+            <li><a href="#courses-prices">Courses & Prices</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="carousel">
+            <div class="carousel-images">
+                <div class="carousel-image">
+                    <img src="C:\Users\hanna\OneDrive\Desktop\gpt\sunset-1373171_1280.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-image">
+                    <img src="C:\Users\hanna\OneDrive\Desktop\gpt\sunset-1373171_1280.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-image">
+                    <img src="C:\Users\hanna\OneDrive\Desktop\gpt\sunset-1373171_1280.jpg" alt="Image 3">
+                </div>
+            </div>
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+        <div id="about-me">
+            <h2>About Me</h2>
+            <div class="profile-picture">
+                <img src="C:\Users\hanna\OneDrive\Desktop\gpt\sunset-1373171_1280.jpg" alt="Profile Picture">
+            </div>
+            <p id="about-me-text">
+                I am a seasoned IT professional with over 10 years of experience in automation and software development.
+                Throughout my career, I have helped numerous organizations streamline their processes through automation solutions.
+                <span id="more-text" style="display: none;">
+                    I have expertise in Python programming, Robotic Process Automation (RPA), and various automation tools.
+                    My passion for technology and automation drives me to constantly explore new advancements and improve efficiency.
+                </span>
+            </p>
+            <a href="#" id="read-more-link" onclick="toggleReadMore()">Read More</a>
+        </div>
+      
+        <h1>Unlock Your Potential</h1>
+        <h2>Master IT Automation</h2>
+        <div class="courses">
+            <div class="course-card" onclick="showPythonCourse()">
+                <h3>Python Automation Masterclass</h3>
+                <p>Master Python programming language for automation.</p>
+            </div>
+            <div class="course-card" onclick="showRPACourse()">
+                <h3>Robotic Process Automation (RPA) Fundamentals</h3>
+                <p>Learn the fundamentals of RPA and automate tasks.</p>
+            </div>
+        </div>
+    </div>
+    <div id="python-course" style="display: none; background-color: #f9f9f9; padding: 20px;">
+        <h2>Python Automation Masterclass</h2>
+        <p>Course details here...</p>
+    </div>
+    <div id="rpa-course" style="display: none; background-color: #e9e9e9; padding: 20px;">
+        <h2>Robotic Process Automation (RPA) Fundamentals</h2>
+        <p>Course details here...</p>
+    </div>
+    <div id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p>Get in touch:</p>
+            <p>Phone: 1-800-123-4567</p>
+            <p>Email: info@automationcourses.com</p>
+        </div>
+        <div class="social-media-buttons">
+            <a href="https://twitter.com/automationcourses" target="_blank">Twitter</a>
+            <a href="https://www.facebook.com/automationcourses" target="_blank">Facebook</a>
+            <a href="https://www.linkedin.com/company/automationcourses" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+    <script>
+        function showPythonCourse() {
+            document.getElementById("python-course").style.display = "block";
+            document.getElementById("rpa-course").style.display = "none";
+        }
+
+        function showRPACourse() {
+            document.getElementById("rpa-course").style.display = "block";
+            document.getElementById("python-course").style.display = "none";
+        }
+        let slideIndex = 0;
+showSlides(slideIndex);
+
+function currentSlide(n) {
+    showSlides(slideIndex = n-1);
+}
+
+function showSlides(n) {
+    let i;
+    const slides = document.getElementsByClassName('carousel-image');
+    const dots = document.getElementsByClassName('dot');
+
+    if (n >= slides.length) { slideIndex = 0 }
+    if (n < 0) { slideIndex = slides.length - 1 }
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(' active-dot', '');
+    }
+
+    slides[slideIndex].style.display = 'block';
+    dots[slideIndex].className += ' active-dot';
+}
+
+
+
+function showSlides() {
+    let i;
+    const slides = document.getElementsByClassName('carousel-image');
+    const dots = document.getElementsByClassName('dot');
+
+    // Hide all slides and deactivate all dots
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(' active-dot', '');
+    }
+
+    // Move to the next slide
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+
+    // Display the current slide and activate the corresponding dot
+    slides[slideIndex - 1].style.display = 'block';
+    dots[slideIndex - 1].className += ' active-dot';
+
+    // Call showSlides() function every 3 seconds
+    setTimeout(showSlides, 3000);
+}
+
+function currentSlide(n) {
+    // Stop the slideshow when a dot is clicked
+    slideIndex = n;
+    showSlides();
+}
+
+function toggleReadMore() {
+    const moreText = document.getElementById("more-text");
+    const readMoreLink = document.getElementById("read-more-link");
+
+    if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        readMoreLink.textContent = "Read Less";
+    } else {
+        moreText.style.display = "none";
+        readMoreLink.textContent = "Read More";
+    }
+}
+
+    </script>
+</body>
+</html>
